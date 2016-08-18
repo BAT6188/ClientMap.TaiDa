@@ -1,0 +1,291 @@
+
+ 记录时间：2015-09-17 10:49:45,297 -描述：gLayerDrawing图层已存在了
+ 记录时间：2015-09-17 11:32:42,386 -描述：{CMD:'00105',TYPE:'Polygon',DISTANCE:'50',GRAPHIC:'{
+  "Geometry": {
+    "rings": [
+      [
+        {
+          "x": 121.20695232468799,
+          "y": 28.585101763457324,
+          "spatialReference": null
+        },
+        {
+          "x": 121.20641115747166,
+          "y": 28.579952901330465,
+          "spatialReference": null
+        },
+        {
+          "x": 121.20498412127596,
+          "y": 28.574976234689679,
+          "spatialReference": null
+        },
+        {
+          "x": 121.20271457587357,
+          "y": 28.570322977032518,
+          "spatialReference": null
+        },
+        {
+          "x": 121.1996714802531,
+          "y": 28.566134515238247,
+          "spatialReference": null
+        },
+        {
+          "x": 121.19594729733511,
+          "y": 28.562538113599008,
+          "spatialReference": null
+        },
+        {
+          "x": 121.19165518453302,
+          "y": 28.559643046958751,
+          "spatialReference": null
+        },
+        {
+          "x": 121.18692555552241,
+          "y": 28.557537280452362,
+          "spatialReference": null
+        },
+        {
+          "x": 121.18190211768747,
+          "y": 28.556284796729567,
+          "spatialReference": null
+        },
+        {
+          "x": 121.17673750564482,
+          "y": 28.5559236518745,
+          "spatialReference": null
+        },
+        {
+          "x": 121.17158864351796,
+          "y": 28.556464819090831,
+          "spatialReference": null
+        },
+        {
+          "x": 121.16661197687718,
+          "y": 28.557891855286538,
+          "spatialReference": null
+        },
+        {
+          "x": 121.16195871922001,
+          "y": 28.560161400688926,
+          "spatialReference": null
+        },
+        {
+          "x": 121.15777025742574,
+          "y": 28.563204496309393,
+          "spatialReference": null
+        },
+        {
+          "x": 121.15417385578651,
+          "y": 28.566928679227388,
+          "spatialReference": null
+        },
+        {
+          "x": 121.15127878914625,
+          "y": 28.571220792029479,
+          "spatialReference": null
+        },
+        {
+          "x": 121.14917302263986,
+          "y": 28.575950421040087,
+          "spatialReference": null
+        },
+        {
+          "x": 121.14792053891706,
+          "y": 28.58097385887503,
+          "spatialReference": null
+        },
+        {
+          "x": 121.147559394062,
+          "y": 28.586138470917675,
+          "spatialReference": null
+        },
+        {
+          "x": 121.14810056127833,
+          "y": 28.591287333044534,
+          "spatialReference": null
+        },
+        {
+          "x": 121.14952759747403,
+          "y": 28.59626399968532,
+          "spatialReference": null
+        },
+        {
+          "x": 121.15179714287642,
+          "y": 28.600917257342477,
+          "spatialReference": null
+        },
+        {
+          "x": 121.15484023849689,
+          "y": 28.605105719136752,
+          "spatialReference": null
+        },
+        {
+          "x": 121.15856442141488,
+          "y": 28.608702120775991,
+          "spatialReference": null
+        },
+        {
+          "x": 121.16285653421697,
+          "y": 28.611597187416248,
+          "spatialReference": null
+        },
+        {
+          "x": 121.16758616322758,
+          "y": 28.613702953922637,
+          "spatialReference": null
+        },
+        {
+          "x": 121.17260960106252,
+          "y": 28.614955437645431,
+          "spatialReference": null
+        },
+        {
+          "x": 121.17777421310517,
+          "y": 28.615316582500498,
+          "spatialReference": null
+        },
+        {
+          "x": 121.18292307523203,
+          "y": 28.614775415284168,
+          "spatialReference": null
+        },
+        {
+          "x": 121.18789974187281,
+          "y": 28.61334837908846,
+          "spatialReference": null
+        },
+        {
+          "x": 121.19255299952998,
+          "y": 28.611078833686072,
+          "spatialReference": null
+        },
+        {
+          "x": 121.19674146132425,
+          "y": 28.608035738065606,
+          "spatialReference": null
+        },
+        {
+          "x": 121.20033786296348,
+          "y": 28.604311555147611,
+          "spatialReference": null
+        },
+        {
+          "x": 121.20323292960374,
+          "y": 28.60001944234552,
+          "spatialReference": null
+        },
+        {
+          "x": 121.20533869611013,
+          "y": 28.595289813334912,
+          "spatialReference": null
+        },
+        {
+          "x": 121.20659117983293,
+          "y": 28.590266375499969,
+          "spatialReference": null
+        },
+        {
+          "x": 121.20695232468799,
+          "y": 28.585101763457324,
+          "spatialReference": null
+        }
+      ]
+    ],
+    "spatialReference": {
+      "wkid": 4326
+    }
+  },
+  "Symbol": {
+    "BorderThickness": 2.0,
+    "BorderBrush": "#FFFF0000",
+    "Fill": "#33FF0000",
+    "ControlTemplate": {
+      "TargetType": null,
+      "Triggers": [],
+      "IsSealed": true,
+      "VisualTree": null,
+      "Template": {},
+      "Resources": {},
+      "HasContent": true,
+      "Dispatcher": null
+    },
+    "DependencyObjectType": {
+      "Id": 101,
+      "SystemType": "ESRI.ArcGIS.Client.Symbols.SimpleFillSymbol, ESRI.ArcGIS.Client, Version=10.2.2.0, Culture=neutral, PublicKeyToken=29c6dd6e8553d944",
+      "BaseType": {
+        "Id": 99,
+        "SystemType": "ESRI.ArcGIS.Client.Symbols.FillSymbol, ESRI.ArcGIS.Client, Version=10.2.2.0, Culture=neutral, PublicKeyToken=29c6dd6e8553d944",
+        "BaseType": {
+          "Id": 87,
+          "SystemType": "ESRI.ArcGIS.Client.Symbols.Symbol, ESRI.ArcGIS.Client, Version=10.2.2.0, Culture=neutral, PublicKeyToken=29c6dd6e8553d944",
+          "BaseType": {
+            "Id": 0,
+            "SystemType": "System.Windows.DependencyObject, WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "BaseType": null,
+            "Name": "DependencyObject"
+          },
+          "Name": "Symbol"
+        },
+        "Name": "FillSymbol"
+      },
+      "Name": "SimpleFillSymbol"
+    },
+    "IsSealed": false,
+    "Dispatcher": {
+      "Thread": {
+        "ManagedThreadId": 10,
+        "ExecutionContext": {
+          "LogicalCallContext": {}
+        },
+        "Priority": 2,
+        "IsAlive": true,
+        "IsThreadPoolThread": false,
+        "IsBackground": false,
+        "ThreadState": 0,
+        "ApartmentState": 0,
+        "CurrentUICulture": "zh-CN",
+        "CurrentCulture": "zh-CN",
+        "Name": null
+      },
+      "HasShutdownStarted": false,
+      "HasShutdownFinished": false,
+      "Hooks": {}
+    }
+  },
+  "Attributes": {},
+  "MapTip": null,
+  "TimeExtent": null,
+  "Selected": false,
+  "DependencyObjectType": {
+    "Id": 86,
+    "SystemType": "ESRI.ArcGIS.Client.Graphic, ESRI.ArcGIS.Client, Version=10.2.2.0, Culture=neutral, PublicKeyToken=29c6dd6e8553d944",
+    "BaseType": {
+      "Id": 0,
+      "SystemType": "System.Windows.DependencyObject, WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "BaseType": null,
+      "Name": "DependencyObject"
+    },
+    "Name": "Graphic"
+  },
+  "IsSealed": false,
+  "Dispatcher": {
+    "Thread": {
+      "ManagedThreadId": 10,
+      "ExecutionContext": {
+        "LogicalCallContext": {}
+      },
+      "Priority": 2,
+      "IsAlive": true,
+      "IsThreadPoolThread": false,
+      "IsBackground": false,
+      "ThreadState": 0,
+      "ApartmentState": 0,
+      "CurrentUICulture": "zh-CN",
+      "CurrentCulture": "zh-CN",
+      "Name": null
+    },
+    "HasShutdownStarted": false,
+    "HasShutdownFinished": false,
+    "Hooks": {}
+  }
+}'}

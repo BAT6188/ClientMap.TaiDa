@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Jovian.ClientMap.parts.PadDVCS"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Tag="DVCS协议测试（临时窗口）"
+             Style="{StaticResource BaseUserControlStyleSmaller}"
+             d:DesignHeight="400" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Style.Setters>
+                <Setter Property="FontSize" Value="12"></Setter>
+            </Style.Setters>
+        </Style>
+        
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnClose" Grid.Row="0" Style="{StaticResource CloseButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="25" Height="15" Margin="0,-35,0,0" Cursor="Hand" Click="btnClose_Click"></Button>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <WrapPanel Margin="0,30">
+                <TextBlock Text="预案加载："></TextBlock>
+                <TextBlock Text="大屏幕墙ID："></TextBlock>
+                <TextBox Name="dwID1" Width="50">1</TextBox>
+                <TextBlock Text="预案ID："></TextBlock>
+                <TextBox Name="layoutID1" Width="50">1</TextBox>
+                <Button Name="LoadPlan" Click="LoadPlan_Click" Content="预案加载"></Button>
+            </WrapPanel>
+            <WrapPanel Grid.Row="1" Margin="0,10,0,50">
+                <TextBlock Text="根据大屏幕墙ID开窗："></TextBlock>
+                <TextBlock Text="大屏幕墙ID"></TextBlock>
+                <TextBox Name="wallID21" Width="30">1</TextBox>
+                <TextBlock Text="窗口ID"></TextBlock>
+                <TextBox Name="winID2" Width="30">2</TextBox>  
+                <TextBlock Text="大屏幕墙名称:" Margin="50,0,0,0"></TextBlock>
+                <TextBox Name="winName" Width="80">大厅1号</TextBox>
+            </WrapPanel>
+            <WrapPanel Grid.Row="1" Margin="0,40,0,0">
+                <TextBlock Text="MAC:"></TextBlock>
+                <TextBox Name="MAC" Width="100">00182300B1A6</TextBox>
+                <TextBlock Text="信号源通道"></TextBlock>
+                <TextBox Name="channelID" Width="50">0</TextBox>
+                <TextBlock Text="X:"></TextBlock>
+                <TextBox Name="x" Width="30">0</TextBox>
+                <TextBlock Text="Y:"></TextBlock>
+                <TextBox Name="y" Width="30">0</TextBox>
+                <TextBlock Text="W:"></TextBlock>
+                <TextBox Name="w" Width="30">2048</TextBox>
+                <TextBlock Text="H:"></TextBlock>
+                <TextBox Name="h" Width="30">1536</TextBox>
+                <TextBlock Text="zindex:"></TextBlock>
+                <TextBox Name="zindex" Width="30">65535</TextBox>
+                <Button Name="btnOpenWin21" Content="根据大屏幕墙ID开窗" Click="btnOpenWin21_Click"></Button>
+                <Button Name="btnOpenWin22" Content="根据大屏幕墙名称开窗" Margin="50,0,0,0" Click="btnOpenWin22_Click"></Button>
+            </WrapPanel>
+            
+            <WrapPanel Grid.Row="2" Margin="0,30,0,0">
+                <TextBlock Text="移动位置和层次选择："></TextBlock>
+                <TextBox Name="way3" Width="50">1</TextBox>
+                <Button Width="100" Name="btnMoveWin3" Content="移动窗口" Click="btnMoveWin3_Click"></Button>
+            </WrapPanel>
+            
+            <WrapPanel Grid.Row="3" Margin="0,30,0,0">
+                <Button Name="btnCloseWin" Content="关窗口根据ID" Click="btnCloseWin_Click"></Button>
+            </WrapPanel>
+        </Grid>
+    </Grid>
+</UserControl>
+ 

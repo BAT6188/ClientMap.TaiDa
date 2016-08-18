@@ -1,0 +1,375 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="Jovian.ClientMap.resources.BaseStyle">
+    <Style TargetType="{x:Type ResizeGrip}">
+        <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ResizeGrip}">
+                    <Border Background="Transparent" SnapsToDevicePixels="True" Width="16" Height="16">
+                        <Rectangle Margin="2">
+                            <Rectangle.Fill>
+                                <DrawingBrush Viewport="0,0,4,4" ViewportUnits="Absolute" Viewbox="0,0,8,8" ViewboxUnits="Absolute" TileMode="Tile">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="#AAA" Geometry="M 4 4 L 4 8 L 8 8 L 8 4 z"></GeometryDrawing>
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CloseButton" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Canvas>
+                        <Rectangle Width="15" Height="15" Stroke="Black" RadiusX="3" RadiusY="3">
+                            <Rectangle.Fill>
+                                <SolidColorBrush x:Name="myAnimatedBrush" Color="Red" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Line X1="3" Y1="3" X2="12" Y2="12" Stroke="White" StrokeThickness="2"></Line>
+                        <Line X1="12" Y1="3" X2="3" Y2="12" Stroke="White" StrokeThickness="2"></Line>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="btnOn" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" BorderBrush="#2B454E" Margin="0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="..\images\btnon.png"></ImageBrush>
+                        </Border.Background>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="btnOff" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" BorderBrush="#2B454E" Margin="0">
+                        <Border.Background>
+                            <ImageBrush ImageSource="..\images\btnoff.png"></ImageBrush>
+                        </Border.Background>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BaseWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="AllowsTransparency" Value="True"></Setter>
+        <Setter Property="WindowStyle" Value="None"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Border Width="Auto" Height="Auto" Name="windowFrame" BorderBrush="Black" BorderThickness="1"  CornerRadius="0,0,10,10" >
+                        <Border.Background>
+                            <LinearGradientBrush  EndPoint="0.5,1" StartPoint="0.5,0">
+                                <LinearGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                        <RotateTransform Angle="176" CenterY="0.5" CenterX="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </LinearGradientBrush.RelativeTransform>
+                                <GradientStop Color="#FF145787" Offset="0.16"/>
+                                <GradientStop Color="#FF3D7FAC" Offset="0.502"/>
+                                <GradientStop Color="#FF88C5EF" Offset="0.984"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Rectangle HorizontalAlignment="Left" Height="100" Stroke="Black" VerticalAlignment="Top" Width="2000" Grid.Row="0" Margin="0,0,0,0">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="1"/>
+                                        <GradientStop Color="#FF68A8BD"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                                <Rectangle.Effect>
+                                    <DropShadowEffect ShadowDepth="10"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <!--标题栏-->  
+                            <TextBlock Grid.Row="0" Margin="36,10,0,0" Text="{TemplateBinding Title}" FontWeight="Bold" FontSize="48" Foreground="White">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect ShadowDepth="10"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+
+                            <Border Grid.Row="1">
+                                <AdornerDecorator>
+                                    <ContentPresenter/>
+                                </AdornerDecorator>
+                            </Border>
+
+                            <!--footer 底部栏 可以用不到-->
+                            <ContentPresenter Grid.Row="2" Margin="10" 
+                                HorizontalAlignment="Center"
+                                Content="{TemplateBinding Tag}"></ContentPresenter>
+                        </Grid>
+
+                    </Border>
+
+                    <!--<ControlTemplate.Triggers>
+                        <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                            <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--用户控件样式-->    
+    <Style x:Key="BaseUserControlStyleSmaller" TargetType="{x:Type UserControl}">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type UserControl}">
+
+                    <Border Width="Auto" Height="Auto" Name="borFrame" BorderBrush="Black" BorderThickness="0"  CornerRadius="10,10,10,10" >
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="10" ShadowDepth="5"></DropShadowEffect>
+                        </Border.Effect>
+                        <Border.Background>
+                            <LinearGradientBrush  EndPoint="0.5,1" StartPoint="0.5,0">
+                                <LinearGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                        <RotateTransform Angle="176" CenterY="0.5" CenterX="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </LinearGradientBrush.RelativeTransform>
+                                <GradientStop Color="#FF145787" Offset="0.16"/>
+                                <GradientStop Color="#FF3D7FAC" Offset="0.502"/>
+                                <GradientStop Color="#FF88C5EF" Offset="0.984"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <!--<Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" StrokeThickness="0"  Width="{TemplateBinding Width}" Grid.Column="0" Margin="0,0,0,0">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="1"/>
+                                        <GradientStop Color="#FF68A8BD"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>-->
+                            <Border BorderBrush="Red" BorderThickness="0" Height="50" Width="{TemplateBinding Width}" Grid.Row="0" CornerRadius="10,10,0,0">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="1"/>
+                                        <GradientStop Color="#FF68A8BD"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+
+
+
+                            <!--标题栏 由于UserControl没有Title，使用Tag代替-->
+                            <TextBlock Grid.Row="0" Margin="10,5,0,0" Text="{TemplateBinding Tag}" FontWeight="Bold" FontSize="24" Foreground="White">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect ShadowDepth="10"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+
+                            <Border Grid.Row="1">
+                                <AdornerDecorator>
+                                    <ContentPresenter/>
+                                </AdornerDecorator>
+                            </Border>
+
+                            <!--footer 底部栏 可以用不到-->
+                            <!--<ContentPresenter Grid.Row="2" Margin="10" 
+                                HorizontalAlignment="Center"
+                                Content="{TemplateBinding Tag}"></ContentPresenter>-->
+                        </Grid>
+                    </Border>
+
+                    <!--<ControlTemplate.Triggers>
+                        <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                            <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>    
+
+    <Style x:Key="BaseUserControlStyleBigger" TargetType="{x:Type UserControl}">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type UserControl}">
+                    <Grid SnapsToDevicePixels="True">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="75"></RowDefinition>
+                            <RowDefinition Height="66"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="77"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="165"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="800"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="..\images\baseUC\11.png"></Image>
+
+                            <Grid Grid.Column="1">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="..\images\baseUC\12.png"  Viewport="0,0 1,76" ViewportUnits="Absolute" TileMode="FlipX"></ImageBrush>
+                                </Grid.Background>
+                                <TextBlock Grid.Column="1" Margin="15,10,0,0" Text="{TemplateBinding Tag}" FontWeight="Bold" FontSize="50" Foreground="White">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect ShadowDepth="10"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                            </Grid>
+                            <Image Grid.Column="2" Source="..\images\baseUC\13.png" HorizontalAlignment="Left"></Image>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="57"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="63"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="..\images\baseUC\21.png"></Image>
+                            <Grid Grid.Column="1">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="..\images\baseUC\22.png"  Viewport="0,0 1,67" ViewportUnits="Absolute" TileMode="FlipX"></ImageBrush>
+                                </Grid.Background>
+                            </Grid>
+                            <Image Grid.Column="2" Source="..\images\baseUC\23.png"></Image>
+                        </Grid>
+                        <Border Grid.Row="2"  BorderBrush="Red" BorderThickness="0" Margin="58,0,64,0">
+                            <Border.Background>
+                                <ImageBrush ImageSource="..\images\baseUC\32.png" Viewport="0,0 1,1" ViewportUnits="Absolute" TileMode="FlipXY"></ImageBrush>
+                            </Border.Background>
+                            <AdornerDecorator>
+                                <ContentPresenter>
+
+                                </ContentPresenter>
+                            </AdornerDecorator>
+                        </Border>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="58"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="64"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="..\images\baseUC\31.png" Viewport="0,0 58,1" ViewportUnits="Absolute" TileMode="FlipY"></ImageBrush>
+                                </Grid.Background>
+                            </Grid>
+                            <Border Grid.Column="1">
+                            </Border>
+                            <Grid Grid.Column="2">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="..\images\baseUC\33.png" Viewport="0,0 64,1" ViewportUnits="Absolute" TileMode="FlipY"></ImageBrush>
+                                </Grid.Background>
+                            </Grid>
+
+
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="58"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="64"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="..\images\baseUC\41.png"></Image>
+                            <Grid Grid.Column="1">
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="..\images\baseUC\42.png" Viewport="0,0 1,77" ViewportUnits="Absolute" TileMode="FlipX"></ImageBrush>
+                                </Grid.Background>
+                            </Grid>
+                            <Image Grid.Column="2" Source="..\images\baseUC\43.png"></Image>
+                        </Grid>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Storyboard x:Key="StoryboardForPadLayersOpen">
+        <DoubleAnimation Storyboard.TargetProperty="Height" From="0" To="400" Duration="0:0:0.25"></DoubleAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="StoryboardForPadLayersClose">
+        <DoubleAnimation Storyboard.TargetProperty="Height" From="400" To="0" Duration="0:0:0.25"></DoubleAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="StoryboardForPadCamerasOpen">
+        <DoubleAnimation Storyboard.TargetProperty="Height" From="0" To="510" Duration="0:0:0.25"></DoubleAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="StoryboardForPadCamerasClose">
+        <DoubleAnimation Storyboard.TargetProperty="Height" From="510" To="0" Duration="0:0:0.25"></DoubleAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="StoryboardForPadOpenedVideosOpen">
+        <DoubleAnimation Storyboard.TargetProperty="Height" From="0" To="300" Duration="0:0:0.25"></DoubleAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="StoryboardForPadOpenedVideosClose">
+        <DoubleAnimation Storyboard.TargetProperty="Height" From="300" To="0" Duration="0:0:0.25"></DoubleAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="StoryboardForToolsOpen">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300,0,0,0" To="0,0,0,0" Duration="0:0:0.25"></ThicknessAnimation>
+    </Storyboard>
+    
+    <Storyboard x:Key="StoryboardForToolsClose">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-300,0,0,0" Duration="0:0:0.25"></ThicknessAnimation>
+    </Storyboard>
+    
+    <Storyboard x:Key="StoryboardForUserToolsOpen">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300,60,0,0" To="0,60,0,0" Duration="0:0:0.25"></ThicknessAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="StoryboardForUserToolsClose">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,60,0,0" To="-300,60,0,0" Duration="0:0:0.25"></ThicknessAnimation>
+    </Storyboard>
+    
+    <Storyboard x:Key="StoryboardForPadRemoteParamsOpen">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-1000,0,0,10" To="0,0,0,10" Duration="0:0:0.25"></ThicknessAnimation>
+    </Storyboard>
+
+    <Storyboard x:Key="StoryboardForPadRemoteParamsClose">
+        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,10" To="-1000,0,0,10" Duration="0:0:0.25"></ThicknessAnimation>
+    </Storyboard>
+</ResourceDictionary>

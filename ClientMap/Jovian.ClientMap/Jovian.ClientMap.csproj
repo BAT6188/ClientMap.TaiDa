@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13FDA9B8-CBDE-4ED7-A9D3-6122241859AE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jovian.ClientMap</RootNamespace>
+    <AssemblyName>Jovian.ClientMap</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>computer1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Apache.NMS">
+      <HintPath>..\..\..\..\资料\常用控件\activeMQ\Apache.NMS.dll</HintPath>
+    </Reference>
+    <Reference Include="Apache.NMS.ActiveMQ">
+      <HintPath>..\..\..\..\资料\常用控件\activeMQ\Apache.NMS.ActiveMQ.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client, Version=10.2.5.0, Culture=neutral, PublicKeyToken=29c6dd6e8553d944, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS SDKs\WPF10.2.5\sdk\bin\ESRI.ArcGIS.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Local, Version=10.2.5.0, Culture=neutral, PublicKeyToken=29c6dd6e8553d944, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS SDKs\WPF10.2.5\sdk\bin\ESRI.ArcGIS.Client.Local.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit, Version=10.2.5.0, Culture=neutral, PublicKeyToken=29c6dd6e8553d944, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS SDKs\WPF10.2.5\sdk\bin\ESRI.ArcGIS.Client.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Client.Toolkit.DataSources, Version=10.2.5.0, Culture=neutral, PublicKeyToken=29c6dd6e8553d944, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\ArcGIS SDKs\WPF10.2.5\sdk\bin\ESRI.ArcGIS.Client.Toolkit.DataSources.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\资料\常用控件\log4net-1.2.13\bin\net\4.0\release\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\资料\常用控件\Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>C:\Program Files (x86)\System.Data.SQLite\2010\bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="classes\Camera.cs" />
+    <Compile Include="classes\Cases.cs" />
+    <Compile Include="classes\DataConverter.cs" />
+    <Compile Include="classes\DVCSAgreement.cs" />
+    <Compile Include="classes\DVCSServer.cs" />
+    <Compile Include="classes\GeoServHelper.cs" />
+    <Compile Include="classes\HeatMap.cs" />
+    <Compile Include="classes\HttpHelper.cs" />
+    <Compile Include="classes\PadHelper.cs" />
+    <Compile Include="classes\PoliceCarGPS.cs" />
+    <Compile Include="classes\RemoteWin.cs" />
+    <Compile Include="classes\SumClusterer.cs" />
+    <Compile Include="classes\ThumbMove.cs" />
+    <Compile Include="classes\ThumbResize.cs" />
+    <Compile Include="classes\Traffic.cs" />
+    <Compile Include="classes\WallVideo.cs" />
+    <Compile Include="classes\WallVideosHelper.cs" />
+    <Compile Include="classes\XmlHelper.cs" />
+    <Compile Include="parts\PadCameras.xaml.cs">
+      <DependentUpon>PadCameras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="parts\PadCaseSwitch.xaml.cs">
+      <DependentUpon>PadCaseSwitch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="parts\PadDVCS.xaml.cs">
+      <DependentUpon>PadDVCS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="parts\PadLayers.xaml.cs">
+      <DependentUpon>PadLayers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="parts\PadOpenedVideos.xaml.cs">
+      <DependentUpon>PadOpenedVideos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="parts\PadRectParams.xaml.cs">
+      <DependentUpon>PadRectParams.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="parts\PadRemoteParams.xaml.cs">
+      <DependentUpon>PadRemoteParams.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="resources\BaseStyle.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\JsonHelper.cs" />
+    <Compile Include="classes\MapLayers.cs" />
+    <Compile Include="classes\MapMethods.cs" />
+    <Compile Include="classes\PublicParams.cs" />
+    <Compile Include="classes\TCPServer.cs" />
+    <Compile Include="classes\TiledMapHelper.cs" />
+    <Compile Include="LogHelper.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="parts\PadCameras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="parts\PadCaseSwitch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="parts\PadDVCS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="parts\PadLayers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="parts\PadOpenedVideos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="parts\PadRectParams.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="parts\PadRemoteParams.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="resources\BaseStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="resources\Symbols.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LockConnected.png" />
+    <Resource Include="images\LockNotConnected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\SL.JPG" />
+    <Resource Include="images\YX.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\origin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\toolsbtn\Circle.png" />
+    <Resource Include="images\toolsbtn\Clear.png" />
+    <Resource Include="images\toolsbtn\Ellipse.png" />
+    <Resource Include="images\toolsbtn\FreehandLine.png" />
+    <Resource Include="images\toolsbtn\Polygon.png" />
+    <Resource Include="images\toolsbtn\Polyline.png" />
+    <Resource Include="images\toolsbtn\Rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\baseUC\11.png" />
+    <Resource Include="images\baseUC\12.png" />
+    <Resource Include="images\baseUC\13.png" />
+    <Resource Include="images\baseUC\21.png" />
+    <Resource Include="images\baseUC\22.png" />
+    <Resource Include="images\baseUC\23.png" />
+    <Resource Include="images\baseUC\31.png" />
+    <Resource Include="images\baseUC\32.png" />
+    <Resource Include="images\baseUC\33.png" />
+    <Resource Include="images\baseUC\41.png" />
+    <Resource Include="images\baseUC\42.png" />
+    <Resource Include="images\baseUC\43.png" />
+    <Resource Include="images\baseUC\cor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\btnoff.png" />
+    <Resource Include="images\btnon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\case.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\policecar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\layers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\symbols\camera24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\toolsbtn\area.png" />
+    <Resource Include="images\toolsbtn\btnleft.png" />
+    <Resource Include="images\toolsbtn\btnright.png" />
+    <Resource Include="images\toolsbtn\cut.png" />
+    <Resource Include="images\toolsbtn\length.png" />
+    <Resource Include="images\toolsbtn\zoomdown.png" />
+    <Resource Include="images\toolsbtn\zoomup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\symbols\company24.png" />
+    <Resource Include="images\symbols\netbar24.png" />
+    <Resource Include="images\symbols\bank24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\symbols\gasoline24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\PoliceCar32a.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\case24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="computer1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\toolsbtn\sideclose.png" />
+    <Resource Include="images\toolsbtn\sideopen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\bgParams.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\bgParams2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\bgParams3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\logodelta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\logojovian.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\simplemap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="images\symbols\hospital24.png" />
+    <Resource Include="images\traffic2.png" />
+    <Resource Include="images\trafficlight\green36.png" />
+    <Resource Include="images\trafficlight\red36.png" />
+    <Resource Include="images\trafficlight\yellow36.png" />
+    <Resource Include="images\traffic.png" />
+    <Resource Include="params.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

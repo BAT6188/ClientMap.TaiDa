@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Root>
+  <ScreenMatrixRows>4</ScreenMatrixRows>
+  <ScreenMatrixColumns>2</ScreenMatrixColumns>
+  <ScreenResolutionWidth>1600</ScreenResolutionWidth>
+  <ScreenResolutionHeight>1200</ScreenResolutionHeight>
+  <ScreenRatio>10</ScreenRatio>
+  <ScreenMatrix>
+    <OneRow>8×2</OneRow>
+    <OneRow>5×3</OneRow>
+    <OneRow>4×3</OneRow>
+    <OneRow>3×3</OneRow>
+    <OneRow>4×2</OneRow>
+    <OneRow>3×2</OneRow>
+    <OneRow>2×2</OneRow>
+  </ScreenMatrix>
+  <ScreenResolution>
+    <OneRow>1920×1080</OneRow>
+    <OneRow>1600×1200</OneRow>
+    <OneRow>1600×900</OneRow>
+    <OneRow>1366×768</OneRow>
+    <OneRow>2160×1600</OneRow>
+  </ScreenResolution>
+  <Windows>
+    <Modular>
+      <Name>警情动态</Name>
+      <Width>151</Width>
+      <Height>89</Height>
+      <X>125</X>
+      <Y>151</Y>
+      <Zindex>3</Zindex>
+      <FontSize>18</FontSize>
+      <Img>images\bgParams3.png</Img>
+    </Modular>
+    <Modular>
+      <Name>动态视频</Name>
+      <Width>160</Width>
+      <Height>120</Height>
+      <X>160</X>
+      <Y>0</Y>
+      <Zindex>4</Zindex>
+      <FontSize>16</FontSize>
+      <Img>images\bgParams3.png</Img>
+    </Modular>
+  </Windows>
+</Root>

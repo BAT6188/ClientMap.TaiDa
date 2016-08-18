@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Jovian.ClientMap.parts.PadOpenedVideos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Style="{StaticResource BaseUserControlStyleSmaller}"
+             Tag="已打开视频列表"
+             d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
+            <Style.Setters>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="Background" Value="Transparent"></Setter>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Style.Setters>
+                <Setter Property="FontSize" Value="21"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="Background" Value="#FF2783b3"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Visible"></Setter>
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible"></Setter>
+                <Setter Property="Height" Value="35"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border BorderBrush="Red" BorderThickness="0" Background="Transparent" Margin="0,5,0,0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="280"></ColumnDefinition>
+                                        <ColumnDefinition Width="80"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Path=Name}">
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect BlurRadius="5" ShadowDepth="5"></DropShadowEffect>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
+                                    <Button x:Name="On" Grid.Column="1" Tag="{Binding Path=Camera_}" ToolTip="开关" Style="{StaticResource btnOn}" Click="btnSwitch_Click"></Button>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+        </Style>
+        
+        <ControlTemplate x:Key="btnTemplate" TargetType="{x:Type Button}">
+            <Border x:Name="border" BorderBrush="White" BorderThickness="1" CornerRadius="3">
+                <TextBlock x:Name="textblock" Text="全部关闭" FontSize="14" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="textblock" Property="Foreground" Value="Red"></Setter>
+                    <Setter TargetName="border" Property="BorderBrush" Value="Red"></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="textblock" Property="Foreground" Value="Yellow"></Setter>
+                    <Setter TargetName="border" Property="BorderBrush" Value="Yellow"></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Path Data="M10,0L0,10 20,10z" Fill="#FF68A8BD" Height="10" Margin="0,-60" Stretch="Fill"  Width="20" VerticalAlignment="Top"/>
+        <Button x:Name="btnCloseAll" Template="{StaticResource btnTemplate}" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="70" Height="25" Margin="0,-37,10,0" Cursor="Hand" Click="btnCloseAll_Click"></Button>
+        <ListBox Grid.Row="1" Margin="10,0,10,20" Name="lstOpenedVideos" BorderThickness="0" Background="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle}"></ListBox>
+
+    </Grid>
+</UserControl>
