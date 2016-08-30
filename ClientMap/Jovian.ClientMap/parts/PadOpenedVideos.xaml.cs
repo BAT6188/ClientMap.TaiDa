@@ -26,6 +26,8 @@ namespace Jovian.ClientMap.parts
             InitializeComponent();
 
             lstOpenedVideos.ItemsSource = PublicParams.arrayOpenedVideos;//绑定已上墙视频列表
+
+            lstOpenedVideosOfDVCS2.ItemsSource = PublicParams.arrayOpenedVideosDVCS2 ;
         }
 
         private void btnSwitch_Click(object sender, RoutedEventArgs e)
@@ -38,7 +40,10 @@ namespace Jovian.ClientMap.parts
                     if (btnSwitch.Tag == null)
                         break;
                     Camera camera = btnSwitch.Tag as Camera;
-                    CloseOneVideo(camera);
+                    if (camera.Kind == PublicParams.dvcsServerMainName)
+                        CloseOneVideo(camera);
+                    else if (camera.Kind == PublicParams.dvcsServer2Name)
+                        WallVideosHelper.CloseVideoToWallForDVCS2(camera);
                     btnSwitch.Tag = null;             
                     break;
                 case "Off"://由于逻辑设定，不会执行到这段代码
@@ -57,10 +62,17 @@ namespace Jovian.ClientMap.parts
         /// <param name="camera">待关闭视频</param>
         private void CloseOneVideo(Camera camera)
         {
-            DVCSServer.SendCMD(DVCSAgreement.CloseWin(camera.WinID));
+            if (camera == null)
+                return;
+
+            PublicParams.dvcsServerMain.SendCMD(DVCSAgreement.CloseWin(camera.WinID));
             MapMethods.SendShowHidePadVideosTextByID("", camera.ID + 1, "0");
+            //LogHelper.WriteLog(string.Format("已发送指令，关闭WinID：{0}的视频--{1}",camera.WinID.ToString(),PublicParams.dvcsServerMainName));
             PublicParams.arrayOpenedVideos[camera.ID] = null;
-            RefreshOpenedVideos();
+
+            WallVideosHelper.CloseVideoToWallForDVCS2(camera);
+
+            WallVideosHelper.RefreshOpenedVideos();
         }
 
         private void btnCloseAll_Click(object sender, RoutedEventArgs e)
@@ -74,16 +86,33 @@ namespace Jovian.ClientMap.parts
             }            
 
             WallVideosHelper.InitOpenedVideos();
-            RefreshOpenedVideos();
+            WallVideosHelper.RefreshOpenedVideos();
         }
 
-        //private void CloseAll
+        //private void btnSwitchForDVCS2_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button btnSwitch = (Button)sender;
+        //    switch (btnSwitch.Name)
+        //    {
+        //        case "On":
+        //            btnSwitch.Style = App.Current.Resources["btnOff"] as Style;
+        //            if (btnSwitch.Tag == null)
+        //                break;
+        //            Camera camera = btnSwitch.Tag as Camera;
+        //            //CloseOneVideo(camera);
+        //            WallVideosHelper.CloseVideoToWallForDVCS2(camera);
+        //            btnSwitch.Tag = null;
+        //            break;
+        //        case "Off"://由于逻辑设定，不会执行到这段代码
+        //            //btnSwitch.Style = App.Current.Resources["btnOn"] as Style;
+        //            btnSwitch.Name = "On";
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
 
-        public static void RefreshOpenedVideos()
-        {
-            PublicParams.padOpenedVideos.lstOpenedVideos.ItemsSource = null;
-            PublicParams.padOpenedVideos.lstOpenedVideos.ItemsSource = PublicParams.arrayOpenedVideos;
-        }
+        
     }
 
 }

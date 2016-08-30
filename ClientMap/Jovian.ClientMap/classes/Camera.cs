@@ -17,6 +17,8 @@ namespace Jovian.ClientMap.classes
         private Camera camera;
 
         private int sourceID;//LPY 2016-3-29 新增
+        private int channelid;//add by LPY 2016-8-29
+        private string kind;//add by LPY 2016-8-30
 
         public string Name
         {
@@ -63,18 +65,38 @@ namespace Jovian.ClientMap.classes
             set { sourceID = value; OnPropertyChanged(new PropertyChangedEventArgs("SourceID")); }
         }
 
-        public Camera(int _id, string _name, int _winid, string _mac, double _x, double _y, int _sourceID)
+        public int ChannelID
         {
-            ID = _id; Name = _name; WinID = _winid; MAC = _mac; X = _x; Y = _y; Camera_ = this; SourceID = _sourceID;
+            get { return channelid; }
+            set { channelid = value; OnPropertyChanged(new PropertyChangedEventArgs("ChannelID")); }
+        }
+
+        public string Kind 
+        {
+            get { return kind; }
+            set { kind = value; OnPropertyChanged(new PropertyChangedEventArgs("Kind")); }
+        }
+
+        public Camera(int _id, string _name, int _winid, string _mac,int _channelid, double _x, double _y, int _sourceID)
+        {
+            ID = _id; Name = _name; WinID = _winid; MAC = _mac; ChannelID = _channelid; X = _x; Y = _y; Camera_ = this; SourceID = _sourceID;
         }
 
         public Camera()
         {
             ID = 0; Name = "";
-            WinID = -1; //-1表示没有打开着的视频
+            WinID = -1; //-1表示没有打开着的视频            
             MAC = "";
+            ChannelID = 0;
             x = 0; y = 0;
             SourceID = 0;
+        }
+
+        public Camera(Camera camera)
+        {
+            ID = camera.ID; Name = camera.Name; WinID = camera.WinID; MAC = camera.MAC; 
+            ChannelID = camera.ChannelID; X = camera.X; Y = camera.Y; Camera_ = this; 
+            SourceID = camera.SourceID; Kind = camera.Kind;
         }
 
 

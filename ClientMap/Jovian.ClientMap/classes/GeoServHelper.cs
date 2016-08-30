@@ -137,7 +137,7 @@ namespace Jovian.ClientMap.classes
                 
                 foreach (Graphic graphic in featureSet.Features)
                 {
-                    PublicParams.listCameras.Add(new Camera(ID++, graphic.Attributes["CameraName"].ToString(), 0, graphic.Attributes["MAC"].ToString(),Convert.ToDouble(graphic.Attributes["X"]),Convert.ToDouble(graphic.Attributes["Y"]),Convert.ToInt32(graphic.Attributes["VideoID"])));
+                    PublicParams.listCameras.Add(new Camera(ID++, graphic.Attributes["CameraName"].ToString(), 0, graphic.Attributes["MAC"].ToString(),0,Convert.ToDouble(graphic.Attributes["X"]),Convert.ToDouble(graphic.Attributes["Y"]),Convert.ToInt32(graphic.Attributes["VideoID"])));
                 }
                 //MapMethods.SendOpenPadVideos();//打开视频背景板
             }

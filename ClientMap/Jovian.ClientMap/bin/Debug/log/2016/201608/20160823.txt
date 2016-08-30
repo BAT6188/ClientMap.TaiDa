@@ -1,0 +1,13 @@
+
+ 记录时间：2016-08-23 10:44:12,621 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Delta/MapServer/1-无法连接！
+ 记录时间：2016-08-23 10:44:16,872 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Delta/MapServer/6-无法连接！
+ 记录时间：2016-08-23 10:44:21,065 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Delta/MapServer/3-无法连接！
+ 记录时间：2016-08-23 10:44:25,291 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Delta/MapServer/5-无法连接！
+ 记录时间：2016-08-23 10:44:29,464 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Delta/MapServer/7-无法连接！
+ 记录时间：2016-08-23 10:44:33,670 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Delta/MapServer/4-无法连接！
+ 记录时间：2016-08-23 10:44:38,186 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Hospital/MapServer/0-无法连接！
+ 记录时间：2016-08-23 10:44:38,347 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Delta/MapServer/1-无法连接！
+ 记录时间：2016-08-23 10:44:38,537 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Traffic/MapServer/2-无法连接！
+ 记录时间：2016-08-23 10:44:38,696 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Traffic/MapServer/1-无法连接！
+ 记录时间：2016-08-23 10:44:38,850 -描述：图层url：http://127.0.0.1:6080/arcgis/rest/services/Delta/MapServer/1-无法连接！
+ 记录时间：2016-08-23 10:44:39,251 -描述：800 470 1600 2400 200 730

@@ -14,7 +14,7 @@
                 <Setter Property="Background" Value="Transparent"></Setter>
             </Style.Setters>
         </Style>
-        <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+        <Style x:Key="ListBoxItemStyleForMain" TargetType="{x:Type ListBoxItem}">
             <Style.Setters>
                 <Setter Property="FontSize" Value="21"></Setter>
                 <Setter Property="FontWeight" Value="Bold"></Setter>
@@ -46,6 +46,7 @@
             </Style.Setters>
         </Style>
         
+        
         <ControlTemplate x:Key="btnTemplate" TargetType="{x:Type Button}">
             <Border x:Name="border" BorderBrush="White" BorderThickness="1" CornerRadius="3">
                 <TextBlock x:Name="textblock" Text="全部关闭" FontSize="14" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
@@ -65,12 +66,12 @@
     <Grid x:Name="LayoutRoot">
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="15"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Path Data="M10,0L0,10 20,10z" Fill="#FF68A8BD" Height="10" Margin="0,-60" Stretch="Fill"  Width="20" VerticalAlignment="Top"/>
         <Button x:Name="btnCloseAll" Template="{StaticResource btnTemplate}" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="70" Height="25" Margin="0,-37,10,0" Cursor="Hand" Click="btnCloseAll_Click"></Button>
-        <ListBox Grid.Row="1" Margin="10,0,10,20" Name="lstOpenedVideos" BorderThickness="0" Background="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyle}"></ListBox>
-
+        <ListBox Grid.Row="1" Margin="10,0,10,60" Name="lstOpenedVideos" BorderThickness="0" Background="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyleForMain}"></ListBox>
+        <ListBox Grid.Row="1" Margin="10,0,10,20" x:Name="lstOpenedVideosOfDVCS2" BorderThickness="0" Background="Transparent" ItemContainerStyle="{StaticResource ListBoxItemStyleForMain}" VerticalAlignment="Bottom" Height="40"></ListBox>
     </Grid>
 </UserControl>

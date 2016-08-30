@@ -43,7 +43,7 @@ namespace Jovian.ClientMap
         private Task threadListenToServerByTCP = null;
         DispatcherTimer timerHeartBeat = new DispatcherTimer();
 
-        private Socket socketDVCSServer = null;
+        //private Socket socketDVCSServer = null;
 
         private static Envelope envelop = new Envelope(121.1, 28.5, 121.38, 28.65) ;//院桥：121.1, 28.5, 121.38, 28.65     舟山定海视频点：122.15,29.97,122.24,30.02
 
@@ -58,6 +58,7 @@ namespace Jovian.ClientMap
         {
             InitializeComponent();
 
+            LogHelper.WriteLog("<-------加载开始了！");
             LoadVectorMap(); //加载矢量地图
             LoadImageMap();//加载影像地图-------考虑异步加载，节省程序加载时间
             
@@ -73,14 +74,18 @@ namespace Jovian.ClientMap
             
             //ShowOneCrimePoint();//添加一个模拟的案件点
 
-            Task taskConnectDVCSServer = new Task(ConnectDVCSServerInTask);//DVCS服务器连接相关
-            taskConnectDVCSServer.Start();
+            //Task taskConnectDVCSServer = new Task(ConnectDVCSServerInTask);//DVCS服务器连接相关
+            //taskConnectDVCSServer.Start();
+            PublicParams.dvcsServerMain = new DVCSServer() { dvcsServerIP = PublicParams.DVCSIP, dvcsServerPort = PublicParams.DVCSPort, dvcsName = PublicParams.dvcsServerMainName };
+            ConnectDVCSServerInTask(PublicParams.dvcsServerMain);
+            PublicParams.dvcsServer2 = new DVCSServer() { dvcsServerIP = PublicParams.DVCSIP2, dvcsServerPort = PublicParams.DVCSPort2, dvcsName = PublicParams.dvcsServer2Name };
+            ConnectDVCSServerInTask(PublicParams.dvcsServer2);
 
             PadHelper.InitPads();//初始化信息窗
             WallVideosHelper.InitOpenedVideos();//初始化已打开视频列表
             
 
-            PoliceCarGPS gps = new PoliceCarGPS();//MQ相关，接收警车GPS信号
+            PoliceCarGPS gpsPoliceCar = new PoliceCarGPS();//MQ相关，接收警车GPS信号
             Cases cases = new Cases();//MQ相关，接收案件信息
             Traffic traffic = new Traffic();
 
@@ -96,7 +101,7 @@ namespace Jovian.ClientMap
                 FillSymbol = App.Current.Resources["DrawFillSymbol"] as FillSymbol
             };
             drawLenOrArea.DrawComplete += drawLenOrArea_DrawComplete;
-
+            LogHelper.WriteLog("<-------加载完成了！");
         }
 
         void drawLenOrArea_DrawComplete(object sender, DrawEventArgs e)
@@ -155,12 +160,13 @@ namespace Jovian.ClientMap
         /// <summary>
         /// LPY 2015-11-13 修改 把建立与DVCS服务器的过程异步进行
         /// </summary>
-        private void ConnectDVCSServerInTask()
+        private void ConnectDVCSServerInTask(DVCSServer dvcsServer)
         {
-            if (ConnectToServer(ref socketDVCSServer, PublicParams.DVCSIP, PublicParams.DVCSPort))//建立与DVCS服务器的连接
+            
+            if (ConnectToServer(ref dvcsServer.socketDVCSServer, dvcsServer.dvcsServerIP,dvcsServer.dvcsServerPort))//建立与DVCS服务器的连接
             {
-                DVCSServer.socketDVCSServer = socketDVCSServer;
-                Task listenToDVCSServer = new Task(DVCSServer.ListenToDVCSServer, TaskCreationOptions.LongRunning);
+                //DVCSServer.socketDVCSServer = socketDVCSServer;
+                Task listenToDVCSServer = new Task(dvcsServer.ListenToDVCSServer, TaskCreationOptions.LongRunning);
                 listenToDVCSServer.Start();
             }
         }
@@ -617,7 +623,7 @@ namespace Jovian.ClientMap
                         btnMainCar.Style = App.Current.Resources["btnOn"] as Style;
                         btnMainCar.Tag = "CarVideoOn";
                         //MessageBox.Show(PublicParams.bigScreenX.ToString() + "  " + PublicParams.bigScreenY.ToString());
-                        Camera camera = new Camera();
+                        Camera camera = new Camera() { Name = PublicParams.MainPoliceCarName, Kind = PublicParams.dvcsServerMainName };//指定主控车视频名称和视频上墙种类
                         WallVideosHelper.OpenPoliceCarVideoToWall(camera);
                         break;
                     case "CarVideoOn":

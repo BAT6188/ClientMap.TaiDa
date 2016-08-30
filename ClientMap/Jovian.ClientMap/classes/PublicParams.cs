@@ -104,8 +104,14 @@ namespace Jovian.ClientMap.classes
         public static int targetPort = Convert.ToInt32(GetAppConfigValueByString("TargetPort"));//
         public static string DVCSIP = GetAppConfigValueByString("DVCSIP");
         public static int DVCSPort = Convert.ToInt32(GetAppConfigValueByString("DVCSPort"));
+        public static string DVCSIP2 = GetAppConfigValueByString("DVCSIP2");
+        public static int DVCSPort2 = Convert.ToInt32(GetAppConfigValueByString("DVCSPort2"));
         public static Type type = typeof(MainWindow);//
         public static string splitChar = GetAppConfigValueByString("SplitChar");//分隔符
+        public static DVCSServer dvcsServerMain = new DVCSServer();
+        public static DVCSServer dvcsServer2 = new DVCSServer();//add by Perry 2016-8-26 第二个DVCS服务器
+        public static string dvcsServerMainName = "dvcsServerMain";
+        public static string dvcsServer2Name = "dvcsServer2";
 
         public static Map pubMainMap = null;
         public static Grid pubLayoutRoot;
@@ -148,12 +154,33 @@ namespace Jovian.ClientMap.classes
         public static int titleHeight = Convert.ToInt32(GetAppConfigValueByString("titleHeight"));//标题高度自定义
         public static int winHeight = 140;//背景板标题高度（动态视频 四个字所在位置的高度）
         public static string dynamicVideoWinName = "动态视频";
+        public static int AdjustmentNum = Convert.ToInt32(GetAppConfigValueByString("AdjustmentNum"));//微调整数
 
+        //第二DVCS服务器开窗相关参数
+        public static int dvcs2wallID = Convert.ToInt32(XmlHelper.GetValueByXPath(xmlFilePath, "/Root/DVCS2WallID"));//2;//
+        public static int dvcs2w = Convert.ToInt32(XmlHelper.GetValueByXPath(xmlFilePath, "/Root/DVCS2Width"));//1920;//
+        public static int dvcs2h = Convert.ToInt32(XmlHelper.GetValueByXPath(xmlFilePath, "/Root/DVCS2Height"));//1080;//
+        public static int dvcs2x1 = Convert.ToInt32(XmlHelper.GetValueByXPath(xmlFilePath, "/Root/DVCS2X"));//0;//
+        public static int dvcs2y1 = Convert.ToInt32(XmlHelper.GetValueByXPath(xmlFilePath, "/Root/DVCS2Y"));//0;//
+        public static int dvcs2zindex = 65535;
+
+        //视频相关
+        public static ObservableCollection<Camera> listCameras = new ObservableCollection<Camera>();//查询到的摄像头列表
         public static Camera[] arrayOpenedVideos = new Camera[4];
         public static int currentVideoFlag = -1;//保存当前操作的视频在 arrayOpenedVideos中的位置，0-3，-1表示初始化
         public static Camera currentCamera = null;
         public static int wallID = Convert.ToInt32(GetAppConfigValueByString("WallID"));//屏幕墙ID
 
+        public static int bigScreenX = 0;
+        public static int bigScreenY = 0;
+        public static Camera bigScreenCamera = null;
+        public static int isPoliceCarVideoSend = 0;
+        public static string MainPoliceCarName = "MainPoliceCar";
+
+        //public static Camera dvcs2OpenedCamera = null;//第二DVCS服务器已打开的视频
+        public static bool IsSendToDVCSServer2 = true;// Convert.ToBoolean(XmlHelper.GetValueByXPath(xmlFilePath, "/Root/SendCmdToDVCSServer2")); //标记是否向第二DVCS服务器发送指令
+        public static Camera[] arrayOpenedVideosDVCS2 = new Camera[1];
+        
         public static Thread threadForMQ = null;//监听MQ线程，程序关闭时，要判断该线程是否为null，不为null时要释放掉
 
         public static PadCameras padCameras;
@@ -162,9 +189,7 @@ namespace Jovian.ClientMap.classes
         //public static PadDVCS padDVCS;
         public static PadRemoteParams padRemoteParams;
         public static PadRectParams padRectParams;
-        public static PadCaseSwitch padCaseSwitch;
-
-        public static ObservableCollection<Camera> listCameras = new ObservableCollection<Camera>();        
+        public static PadCaseSwitch padCaseSwitch;        
 
         //两个Symbol模板
         public static FillSymbol fillSymbol = App.Current.Resources["DefaultFillSymbol"] as FillSymbol;
@@ -174,10 +199,7 @@ namespace Jovian.ClientMap.classes
         public static LineSymbol lengthSymbol = App.Current.Resources["LengthSymbol"] as LineSymbol;
         public static TextSymbol textSymbol = App.Current.Resources["TxtSymbol"] as TextSymbol;
 
-        public static int bigScreenX = 0;
-        public static int bigScreenY = 0;
-        public static Camera bigScreenCamera = null;
-        public static int isPoliceCarVideoSend = 0;
+
 
         public static bool IsLogWrite = GetAppConfigValueByString("IsLogWrite") == "1" ? true : false;//日志是否输出
         

@@ -157,7 +157,7 @@ D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\obj\Debug\Jovian.ClientMa
 D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\obj\Debug\Jovian.ClientMap.pdb
 D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\obj\Debug\parts\PadCaseSwitch.baml
 D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\obj\Debug\parts\PadCaseSwitch.g.cs
-D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\obj\Debug\Jovian.ClientMap.csprojResolveAssemblyReference.cache
 D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\bin\Debug\Apache.NMS.ActiveMQ.dll
 D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\bin\Debug\Apache.NMS.dll
 D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\bin\Debug\log4net.dll
+D:\projects\ClientMap.TaiDa\ClientMap\Jovian.ClientMap\obj\Debug\Jovian.ClientMap.csprojResolveAssemblyReference.cache

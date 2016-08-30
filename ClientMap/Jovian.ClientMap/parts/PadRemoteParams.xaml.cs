@@ -71,6 +71,13 @@ namespace Jovian.ClientMap.parts
                     ComboBoxItem cbi = new ComboBoxItem() { Content = screenResolution };
                     cbScreenResolution.Items.Add(cbi);
                 }
+
+                cbDVCS2Switch.IsChecked = PublicParams.IsSendToDVCSServer2;
+                tbDVCS2WallID.Text = PublicParams.dvcs2wallID.ToString();
+                tbDVCS2Width.Text = PublicParams.dvcs2w.ToString();
+                tbDVCS2Height.Text = PublicParams.dvcs2h.ToString();
+                tbDVCS2X.Text = PublicParams.dvcs2x1.ToString();
+                tbDVCS2Y.Text = PublicParams.dvcs2y1.ToString();
             }
             catch (Exception)
             {
@@ -101,11 +108,6 @@ namespace Jovian.ClientMap.parts
             drawingBrushCanvas.Viewport = new Rect(0, 0, ScreenResolutionWidth / screenRaito, ScreenResolutionHeight / screenRaito);
             drawingBrushCanvas.ViewportUnits = BrushMappingMode.Absolute;
             canvasParams.Background = drawingBrushCanvas;
-        }
-        //发送按钮
-        private void tbSend_Click(object sender, RoutedEventArgs e)
-        {
-            //MapMethods.SendChangePadParams(Convert.ToDouble(tbWidth.Text), Convert.ToDouble(tbHeight.Text), Convert.ToDouble(tbFontSize.Text));
         }
 
         //
@@ -424,16 +426,48 @@ namespace Jovian.ClientMap.parts
         /// <param name="y"></param>
         public static void RecalculateVideosPosition(int w,int h,int x,int y)
         {
-            PublicParams.w = w * screenRaito / 2;
-            PublicParams.h = (h * screenRaito - PublicParams.winHeight - PublicParams.titleHeight * 2) / 2;
+            PublicParams.w = w * screenRaito / 2 - PublicParams.AdjustmentNum;
+            PublicParams.h = (h * screenRaito - PublicParams.winHeight - PublicParams.titleHeight * 2) / 2 - PublicParams.AdjustmentNum;//
 
             PublicParams.x1 = x * screenRaito;
-            PublicParams.x2 = x * screenRaito + PublicParams.w;
+            PublicParams.x2 = x * screenRaito + PublicParams.w + PublicParams.AdjustmentNum;
             PublicParams.y1 = y * screenRaito + PublicParams.winHeight + PublicParams.titleHeight;
             PublicParams.y2 = y * screenRaito + PublicParams.winHeight + PublicParams.titleHeight + PublicParams.h + PublicParams.titleHeight;
 
-            LogHelper.WriteLog(PublicParams.w.ToString() + " " + PublicParams.h.ToString() + " " + PublicParams.x1.ToString() + " " + PublicParams.x2.ToString() + " " + PublicParams.y1.ToString() + " " + PublicParams.y2.ToString());
+            //LogHelper.WriteLog(PublicParams.w.ToString() + " " + PublicParams.h.ToString() + " " + PublicParams.x1.ToString() + " " + PublicParams.x2.ToString() + " " + PublicParams.y1.ToString() + " " + PublicParams.y2.ToString());
         }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(cbDVCS2Switch.IsChecked.ToString());
+            CheckBox cb = sender as CheckBox;
+            switch (cb.Tag.ToString())
+            {
+                case "DVCS2Switch":
+                    PublicParams.IsSendToDVCSServer2 = cbDVCS2Switch.IsChecked.Value;
+                    if (PublicParams.IsSendToDVCSServer2)
+                        XmlHelper.UpdateValueByXPath(PublicParams.xmlFilePath, "/Root/SendCmdToDVCSServer2", "True");
+                    else
+                        XmlHelper.UpdateValueByXPath(PublicParams.xmlFilePath, "/Root/SendCmdToDVCSServer2", "False");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void tbSave_Click(object sender, RoutedEventArgs e)
+        {
+            XmlHelper.UpdateValueByXPath(PublicParams.xmlFilePath, "/Root/DVCS2WallID", tbDVCS2WallID.Text.Trim());
+            XmlHelper.UpdateValueByXPath(PublicParams.xmlFilePath, "/Root/DVCS2Width", tbDVCS2Width.Text.Trim());
+            XmlHelper.UpdateValueByXPath(PublicParams.xmlFilePath, "/Root/DVCS2Height", tbDVCS2Height.Text.Trim());
+            XmlHelper.UpdateValueByXPath(PublicParams.xmlFilePath, "/Root/DVCS2X", tbDVCS2X.Text.Trim());
+            XmlHelper.UpdateValueByXPath(PublicParams.xmlFilePath, "/Root/DVCS2Y", tbDVCS2Y.Text.Trim());
+
+            //WallVideosHelper.ShowKeyMessage();//mark by LPY 打印关键信息-调试用
+
+            MessageBox.Show("保存成功！","提示",MessageBoxButton.OK,MessageBoxImage.Information);
+        }
+
         
     }
 

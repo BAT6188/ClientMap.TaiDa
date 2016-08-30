@@ -13,18 +13,22 @@ namespace Jovian.ClientMap.classes
     /// LPY 2015-9-29 添加
     /// 与DVCS服务器通信的类
     /// </summary>
-    public static class DVCSServer
+    public class DVCSServer
     {
-        public static Socket socketDVCSServer = null;
+        public Socket socketDVCSServer = null;
+        public string dvcsServerIP;
+        public int dvcsServerPort;
+        public string dvcsName;
 
-        public static void SendCMD(byte[] cmd)
+        public void SendCMD(byte[] cmd)
         {
             try
             {
                 if (socketDVCSServer != null)
                 {
-                    LogHelper.WriteLog(DVCSAgreement.GetStringFromBytes(cmd));
                     socketDVCSServer.Send(cmd);
+                    LogHelper.WriteLog(string.Format("{1}-向{0}发送，IP：{2}",dvcsName, DVCSAgreement.GetStringFromBytes(cmd),dvcsServerIP));
+                    
                 }
             }
             catch (Exception)
@@ -33,7 +37,7 @@ namespace Jovian.ClientMap.classes
             }
         }
 
-        public static void ListenToDVCSServer()
+        public void ListenToDVCSServer()
         {
             try
             {
@@ -63,11 +67,11 @@ namespace Jovian.ClientMap.classes
             }
         }
 
-        private static void HandleDVCSCommands(byte[] bytes)
+        private void HandleDVCSCommands(byte[] bytes)
         {
             try
             {
-                //LogHelper.WriteLog(PublicParams.type, DVCSAgreement.GetStringFromBytes(bytes));
+                LogHelper.WriteLog(string.Format("{1}-从{0}收到", dvcsName, DVCSAgreement.GetStringFromBytes(bytes)));
                 if (bytes.Length <= 0)
                     return;
                 switch (bytes[7])//回复代码第八位为动作指示，如：开窗结果回复，关窗结果回复，移窗结果回复等。
@@ -77,14 +81,32 @@ namespace Jovian.ClientMap.classes
                         {
                             List<byte> bytesWinID = bytes.Skip(13).Take(4).ToList();//第13位开始的4位为winid
                             int winID = DVCSAgreement.GetIntFromBytesList(bytesWinID, true);
-                            if (PublicParams.isPoliceCarVideoSend == 1)
+                            if (dvcsName == PublicParams.dvcsServerMainName)
                             {
-                                PublicParams.bigScreenCamera.WinID = winID;
-                                PublicParams.isPoliceCarVideoSend = 0;
+                                if (PublicParams.isPoliceCarVideoSend == 1)
+                                {
+                                    PublicParams.isPoliceCarVideoSend = 0;
+                                    PublicParams.bigScreenCamera.WinID = winID;
+                                    break;
+                                }
+                                PublicParams.arrayOpenedVideos[PublicParams.currentVideoFlag].WinID = winID;//设置其已打开窗口所返回的winid
+
+                                //LogHelper.WriteLog(string.Format("已将PublicParams.arrayOpenedVideos-{0}处的camera的winID设置为：{1}", PublicParams.currentVideoFlag.ToString(), winID.ToString()));
+                                WallVideosHelper.RefreshOpenedVideos();
+                                //LogHelper.WriteLog(string.Format("收到服务器返回的WinID：{0}--{1}", winID.ToString(), PublicParams.dvcsServerMainName));
                                 break;
                             }
-                            PublicParams.arrayOpenedVideos[PublicParams.currentVideoFlag].WinID = winID;//设置其已打开窗口所返回的winid
-                            PadOpenedVideos.RefreshOpenedVideos();
+                            else if (dvcsName == PublicParams.dvcsServer2Name)
+                            {
+                                //LogHelper.WriteLog("在HandleDVCSCommands中打印，执行PublicParams.arrayOpenedVideosDVCS2[0].WinID = winID前-------------------------------" + PublicParams.dvcsServer2Name);
+                                //WallVideosHelper.ShowKeyMessage();//mark by LPY 打印关键信息-调试用
+                                PublicParams.arrayOpenedVideosDVCS2[0].WinID = winID;
+                                WallVideosHelper.RefreshOpenedVideos();
+                                //LogHelper.WriteLog("在HandleDVCSCommands中打印，执行PublicParams.arrayOpenedVideosDVCS2[0].WinID = winID后-------------------------------" + PublicParams.dvcsServer2Name);
+                                //WallVideosHelper.ShowKeyMessage();//mark by LPY 打印关键信息-调试用
+                                //LogHelper.WriteLog(string.Format("收到服务器返回的WinID：{0}--{1}", winID.ToString(), PublicParams.dvcsServer2Name));
+                                break;
+                            }
                         }
                         break;
                     case 0x89://关窗回复
@@ -93,6 +115,7 @@ namespace Jovian.ClientMap.classes
                     default:
                         break;
                 }
+                //LogHelper.WriteLog(dvcsName + "------------------------------------------------------------------------------------------------");
             }
             catch (Exception)
             {

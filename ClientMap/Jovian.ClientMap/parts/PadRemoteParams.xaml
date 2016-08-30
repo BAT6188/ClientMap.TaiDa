@@ -21,6 +21,11 @@
             <Setter Property="FontSize" Value="16"></Setter>
             <Setter Property="TextAlignment" Value="Right"></Setter>
             <Setter Property="Margin" Value="1"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+        <Style x:Key="groupBox" TargetType="{x:Type GroupBox}">
+            <Setter Property="Foreground" Value="Red"></Setter>
         </Style>
         <Style x:Key="btnRightSideClose" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -130,66 +135,69 @@
             </Border.Background>
             <Button x:Name="btnRightSide" Tag="Close" Style="{StaticResource btnRightSideClose}" Cursor="Hand" Click="btnRightSide_Click"></Button>
         </Border>
-        <TabControl Background="Transparent" BorderThickness="0">
+        <TabControl Background="Transparent" BorderThickness="0" FontSize="16">
             <TabItem Header="参数模式">
-                <ScrollViewer x:Name="svTxt" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer x:Name="svTxt" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
                 <Grid x:Name="gridTxt">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"></RowDefinition>
-                        <RowDefinition Height="175"></RowDefinition>
-                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="120"></RowDefinition>
+                        <RowDefinition Height="200"></RowDefinition>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Border x:Name="borderURL" BorderBrush="Red" BorderThickness="0" CornerRadius="10,10,10,10">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="PGIS底图URL配置：" Margin="20,2,0,0" Foreground="Red" FontSize="16"></TextBlock>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="矢量图URL：" Style="{StaticResource styleTxt}"></TextBlock>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="影像图URL：" Style="{StaticResource styleTxt}"></TextBlock>
-                            <TextBlock Grid.Row="3" Grid.Column="0" Text="矢量影像图URL：" Style="{StaticResource styleTxt}"></TextBlock>
-                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtSL" Margin="2" Text="http://33.226.5.126:82/PGIS_S_TileMapServer/Maps/SL/EzMap?Service=getImage&amp;Type=RGB&amp;V=0.3&amp;"></TextBox>
-                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtYX" Margin="2" Text="http://33.226.5.126:82/PGIS_S_TileMapServer/Maps/YX/EzMap?Service=getImage&amp;Type=RGB&amp;V=0.3&amp;"></TextBox>
-                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtSLYX" Margin="2" Text="http://33.226.5.126:82/PGIS_S_TileMapServer/Maps/SLYX/EzMap?Service=getImage&amp;Type=RGB&amp;V=0.3&amp;"></TextBox>
-                        </Grid>
-                    </Border>
+                            <GroupBox Header="PGIS底图URL配置" Style="{StaticResource groupBox}" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>                                    
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="矢量图URL：" Style="{StaticResource styleTxt}"></TextBlock>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="影像图URL：" Style="{StaticResource styleTxt}"></TextBlock>
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="矢量影像图URL：" Style="{StaticResource styleTxt}"></TextBlock>
+                                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtSL" Margin="2" Text="http://33.226.5.126:82/PGIS_S_TileMapServer/Maps/SL/EzMap?Service=getImage&amp;Type=RGB&amp;V=0.3&amp;"></TextBox>
+                                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtYX" Margin="2" Text="http://33.226.5.126:82/PGIS_S_TileMapServer/Maps/YX/EzMap?Service=getImage&amp;Type=RGB&amp;V=0.3&amp;"></TextBox>
+                                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtSLYX" Margin="2" Text="http://33.226.5.126:82/PGIS_S_TileMapServer/Maps/SLYX/EzMap?Service=getImage&amp;Type=RGB&amp;V=0.3&amp;"></TextBox>
+                                </Grid>
+                            </GroupBox>
+                        </Border>
                         <Border Grid.Row="1" BorderBrush="Blue" BorderThickness="0" CornerRadius="10" Margin="0,0,0,0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="地图图层：" Margin="20,2,0,0" Foreground="Red" FontSize="16"></TextBlock>
-                                <TextBlock Grid.Row="1" Grid.Column="0" Text="监控点：" Style="{StaticResource styleTxt}"></TextBlock>
-                                <TextBlock Grid.Row="2" Grid.Column="0" Text="网吧：" Style="{StaticResource styleTxt}"></TextBlock>
-                                <TextBlock Grid.Row="3" Grid.Column="0" Text="银行：" Style="{StaticResource styleTxt}"></TextBlock>
-                                <TextBlock Grid.Row="4" Grid.Column="0" Text="企业：" Style="{StaticResource styleTxt}"></TextBlock>
-                                <TextBlock Grid.Row="5" Grid.Column="0" Text="加油站：" Style="{StaticResource styleTxt}"></TextBlock>
-                                <TextBlock Grid.Row="6" Grid.Column="0" Text="案件点：" Style="{StaticResource styleTxt}"></TextBlock>
+                            <GroupBox Header="地图图层" Style="{StaticResource groupBox}" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="监控点：" Style="{StaticResource styleTxt}"></TextBlock>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="网吧：" Style="{StaticResource styleTxt}"></TextBlock>
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="银行：" Style="{StaticResource styleTxt}"></TextBlock>
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="企业：" Style="{StaticResource styleTxt}"></TextBlock>
+                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="加油站：" Style="{StaticResource styleTxt}"></TextBlock>
+                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="案件点：" Style="{StaticResource styleTxt}"></TextBlock>
 
-                                <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtCamerasLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/4"></TextBox>
-                                <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtNetBarLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/6"></TextBox>
-                                <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtBankLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/5"></TextBox>
-                                <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtCompanyLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/3"></TextBox>
-                                <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtGasolineLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/2"></TextBox>
-                                <TextBox Grid.Row="6" Grid.Column="1" x:Name="txtCaseLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/1"></TextBox>
-                                <!--<TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="警情开窗参数配置：" Margin="20,2,0,0" Foreground="Blue" FontSize="16"></TextBlock>
+                                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtCamerasLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/4"></TextBox>
+                                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtNetBarLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/6"></TextBox>
+                                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtBankLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/5"></TextBox>
+                                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtCompanyLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/3"></TextBox>
+                                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtGasolineLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/2"></TextBox>
+                                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="txtCaseLayer" Margin="2" Text="http://192.168.1.99:6080/arcgis/rest/services/Jovian/MapServer/1"></TextBox>
+                                    <!--<TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="警情开窗参数配置：" Margin="20,2,0,0" Foreground="Blue" FontSize="16"></TextBlock>
                                 <TextBlock Grid.Row="1" Grid.Column="0" Text="宽：" Style="{StaticResource styleTxt}"></TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="0" Text="高：" Style="{StaticResource styleTxt}"></TextBlock>
                                 <TextBlock Grid.Row="3" Grid.Column="0" Text="字号（FontSize）：" Style="{StaticResource styleTxt}"></TextBlock>
@@ -197,23 +205,60 @@
                                 <TextBox x:Name="tbHeight" Grid.Row="2" Grid.Column="1" Text="1000" Style="{StaticResource styleTb}"></TextBox>
                                 <TextBox x:Name="tbFontSize" Grid.Row="3" Grid.Column="1" Text="16" Style="{StaticResource styleTb}"></TextBox>-->
 
+                                </Grid>
+                            </GroupBox>
+                        </Border>
+                        <Border Grid.Row="2">
+                            <GroupBox Header="第二DVCS服务器相关参数" Style="{StaticResource groupBox}" >
+                                <GroupItem>
+                                    <Grid Margin="0,0,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>                                    
+                                        <CheckBox x:Name="cbDVCS2Switch" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Tag="DVCS2Switch" Content="是否发送指令" Foreground="White" FontSize="16" Click="CheckBox_Click" ></CheckBox>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="W：" Style="{StaticResource styleTxt}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="2" Text="H：" Style="{StaticResource styleTxt}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="4" Text="X：" Style="{StaticResource styleTxt}"></TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="6" Text="Y：" Style="{StaticResource styleTxt}"></TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Text="WallID：" Style="{StaticResource styleTxt}"></TextBlock>
+
+                                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbDVCS2Width" Margin="2" Text="" Width="50"  Style="{StaticResource styleTb}"></TextBox>
+                                        <TextBox Grid.Row="1" Grid.Column="3" x:Name="tbDVCS2Height" Margin="2" Text="" Width="50" Style="{StaticResource styleTb}"></TextBox>
+                                        <TextBox Grid.Row="1" Grid.Column="5" x:Name="tbDVCS2X" Margin="2" Text="" Width="50" Style="{StaticResource styleTb}"></TextBox>
+                                        <TextBox Grid.Row="1" Grid.Column="7" x:Name="tbDVCS2Y" Margin="2" Text="" Width="50" Style="{StaticResource styleTb}"></TextBox>
+                                        <TextBox Grid.Row="0" Grid.Column="3" x:Name="tbDVCS2WallID" Margin="2" Text="" Width="50" Style="{StaticResource styleTb}"></TextBox>
+                                    </Grid>
+                                </GroupItem>
+                                
+                            </GroupBox>
+                            
+                        </Border>
+                        <Border Grid.Row="3" BorderBrush="Green" BorderThickness="0" CornerRadius="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                    <Button x:Name="tbSave" Grid.Row="0" Grid.Column="0" Content="保存" Margin="30,2" Click="tbSave_Click" IsEnabled="True"></Button>
+                                    <Button x:Name="tbRead" Grid.Row="0" Grid.Column="1" Content="回读" Margin="30,2" IsEnabled="False"></Button>
                             </Grid>
                         </Border>
-                        <Border Grid.Row="2" BorderBrush="Green" BorderThickness="0" CornerRadius="10">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                                <Button x:Name="tbSend" Grid.Row="0" Grid.Column="0" Content="发送" Margin="30,2" Click="tbSend_Click" IsEnabled="False"></Button>
-                                <Button x:Name="tbRead" Grid.Row="0" Grid.Column="1" Content="回读" Margin="30,2" IsEnabled="False"></Button>
-                        </Grid>
-                    </Border>
                 </Grid>
                 </ScrollViewer>
             </TabItem>

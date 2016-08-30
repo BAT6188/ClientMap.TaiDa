@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="gb2312"?>
 <Root>
-  <ScreenMatrixRows>4</ScreenMatrixRows>
+  <ScreenMatrixRows>2</ScreenMatrixRows>
   <ScreenMatrixColumns>2</ScreenMatrixColumns>
-  <ScreenResolutionWidth>1600</ScreenResolutionWidth>
-  <ScreenResolutionHeight>1200</ScreenResolutionHeight>
+  <ScreenResolutionWidth>2160</ScreenResolutionWidth>
+  <ScreenResolutionHeight>1600</ScreenResolutionHeight>
   <ScreenRatio>10</ScreenRatio>
   <ScreenMatrix>
-    <OneRow>8×2</OneRow>
-    <OneRow>5×3</OneRow>
-    <OneRow>4×3</OneRow>
-    <OneRow>3×3</OneRow>
     <OneRow>4×2</OneRow>
-    <OneRow>3×2</OneRow>
     <OneRow>2×2</OneRow>
   </ScreenMatrix>
   <ScreenResolution>
     <OneRow>1920×1080</OneRow>
     <OneRow>1600×1200</OneRow>
-    <OneRow>1600×900</OneRow>
     <OneRow>1366×768</OneRow>
     <OneRow>2160×1600</OneRow>
   </ScreenResolution>
+  <SendCmdToDVCSServer2>False</SendCmdToDVCSServer2>
+  <DVCS2WallID>2</DVCS2WallID>
+  <DVCS2Width>1920</DVCS2Width>
+  <DVCS2Height>1080</DVCS2Height>
+  <DVCS2X>0</DVCS2X>
+  <DVCS2Y>0</DVCS2Y>
   <Windows>
     <Modular>
       <Name>警情动态</Name>

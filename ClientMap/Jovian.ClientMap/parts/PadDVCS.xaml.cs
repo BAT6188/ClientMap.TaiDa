@@ -36,7 +36,7 @@ namespace Jovian.ClientMap.parts
         {
             byte[] cmd = DVCSAgreement.LoadPlan(GetInt(dwID1.Text),GetInt(layoutID1.Text));
             MessageBox.Show("将发送：" + DVCSAgreement.GetStringFromBytes(cmd));
-            DVCSServer.SendCMD(cmd);
+            PublicParams.dvcsServerMain.SendCMD(cmd);
         }
 
         //根据大屏幕墙ID开窗
@@ -45,7 +45,7 @@ namespace Jovian.ClientMap.parts
             byte[] cmd = DVCSAgreement.OpenWin(GetInt(wallID21.Text), GetInt(winID2.Text), DVCSAgreement.GetByteListByString(MAC.Text, false), GetInt(channelID.Text), GetInt(x.Text), GetInt(y.Text), GetInt(w.Text), GetInt(h.Text), GetInt(zindex.Text));
             MessageBox.Show("将发送：" + DVCSAgreement.GetStringFromBytes(cmd));
             //LogHelper.WriteLog(PublicParams.type, "");
-            DVCSServer.SendCMD(cmd);
+            PublicParams.dvcsServerMain.SendCMD(cmd);
         }
 
         //根据大屏幕墙名称开窗
@@ -55,7 +55,7 @@ namespace Jovian.ClientMap.parts
             //byte[] bb = DVCSAgreement.GetBytesFromString(winName.Text);
             //string ss = Encoding.UTF8.GetString(bb);
             MessageBox.Show("将发送：" + DVCSAgreement.GetStringFromBytes(cmd));
-            DVCSServer.SendCMD(cmd);
+            PublicParams.dvcsServerMain.SendCMD(cmd);
             LogHelper.WriteLog(DVCSAgreement.GetStringFromBytes(cmd));
         }
 
@@ -64,7 +64,7 @@ namespace Jovian.ClientMap.parts
         {
             byte[] cmd = DVCSAgreement.MoveWin(GetInt(winID2.Text), GetInt(way3.Text), GetInt(x.Text), GetInt(y.Text), GetInt(w.Text), GetInt(h.Text), GetInt(zindex.Text));
             MessageBox.Show("将发送：" + DVCSAgreement.GetStringFromBytes(cmd));
-            DVCSServer.SendCMD(cmd);
+            PublicParams.dvcsServerMain.SendCMD(cmd);
         }
 
         //关窗口根据ID
